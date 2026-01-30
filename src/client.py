@@ -5,8 +5,8 @@ import urllib.parse
 import urllib.request
 from typing import Any, Dict, Optional
 
-from .cache import SoloditCache
-from .config import get_api_key, get_base_url
+from cache import SoloditCache
+from config import get_api_key, get_base_url
 
 
 class SoloditClient:

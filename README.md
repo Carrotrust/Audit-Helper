@@ -42,13 +42,40 @@ audit-helper scan /path/to/contracts \
   --impact HIGH --impact MEDIUM --impact LOW \
   --unique-findings 20 \
   --min-core-overlap 1 --min-overlap 2 \
-  --out report.md
+  --out scan.md
 ```
 
 If you prefer module execution:
 
 ```bash
-python -m audit_helper.cli scan /path/to/contracts --unique-findings 20 --out report.md
+python -m cli scan /path/to/contracts --unique-findings 20 --out scan.md
+```
+
+### How to use it
+
+Audit Helper can scan an entire folder or a specific list of files:
+
+- **Scan a whole folder:** point the tool at the root of the codebase you want to review.
+- **Scan specific files:** create a newline-delimited file list and pass it with `--file-list`.
+
+Example (scan a folder):
+
+```bash
+audit-helper scan /path/to/project --unique-findings 20 --out scan.md
+```
+
+Example (scan specific files):
+
+```bash
+cat > /tmp/scope.txt <<'EOF'
+contracts/Foo.sol
+contracts/Bar.sol
+EOF
+
+audit-helper scan /path/to/project \
+  --file-list /tmp/scope.txt \
+  --unique-findings 20 \
+  --out scan.md
 ```
 
 ### Important flags
@@ -64,7 +91,7 @@ python -m audit_helper.cli scan /path/to/contracts --unique-findings 20 --out re
 - `--min-core-overlap` sets the minimum overlap on core security terms.
 - `--require-snippet` only matches findings that include code snippets.
 - `--min-code-similarity` sets how similar code snippets must be to match (0.00–1.00).
-- `--out` writes a markdown report instead of printing to stdout.
+- `--out` writes a markdown report (e.g., `scan.md`) instead of printing to stdout.
 - `sync --resume` continues from the last saved page to avoid re-downloading.
 
 ### Match locations
@@ -74,7 +101,7 @@ Use `--per-function` or `--unique-findings` to include **file + function** match
 ## Python Usage
 
 ```python
-from audit_helper.client import SoloditClient
+from client import SoloditClient
 
 client = SoloditClient()
 findings = client.findings(
@@ -95,3 +122,7 @@ print(findings)
 
 - Results are cached by request signature to speed up repeat queries.
 - Matches are **not** guaranteed to be confirmed bugs. Always review and validate results to rule out false positives.
+
+## Contributing
+
+Contributions are welcome. Feel free to open issues or submit pull requests with improvements, new features, or bug fixes.

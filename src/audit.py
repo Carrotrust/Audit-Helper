@@ -4,8 +4,8 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
-from .client import SoloditClient
-from .index import SoloditFindingsIndex
+from client import SoloditClient
+from index import SoloditFindingsIndex
 
 
 SOLIDITY_KEYWORDS = {

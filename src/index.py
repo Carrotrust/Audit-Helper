@@ -3,8 +3,8 @@ import sqlite3
 import time
 from typing import Iterable, List, Optional
 
-from .client import SoloditClient
-from .config import get_findings_db_path
+from client import SoloditClient
+from config import get_findings_db_path
 
 
 class SoloditFindingsIndex:

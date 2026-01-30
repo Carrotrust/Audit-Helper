@@ -6,7 +6,7 @@ import time
 from dataclasses import dataclass
 from typing import Any, Optional
 
-from .config import get_cache_path, get_cache_ttl_days
+from config import get_cache_path, get_cache_ttl_days
 
 
 @dataclass

@@ -3,8 +3,8 @@ import os
 import json
 from typing import Dict, List, Optional
 
-from .cache import SoloditCache
-from .audit import (
+from cache import SoloditCache
+from audit import (
     aggregate_unique_findings,
     scan_findings,
     scan_local_index,
@@ -12,8 +12,8 @@ from .audit import (
     scan_local_index_per_function,
     scan_local_index_per_function_files,
 )
-from .client import SoloditClient
-from .index import sync_findings
+from client import SoloditClient
+from index import sync_findings
 
 
 def _parse_params(items: Optional[List[str]]) -> Dict[str, str]:
